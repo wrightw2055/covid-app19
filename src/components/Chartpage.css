@@ -1,0 +1,23 @@
+.all-content{
+    background-color: #CCDBDC;
+}
+
+.container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+    width: 20%;
+    color: #ceb992;
+}
+
+.chart-container {
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    height: 50%;
+}
+
+.search-container{
+   display: inline;
+}
