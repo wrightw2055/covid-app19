@@ -27,7 +27,7 @@ export const chartData = async () => {
 
 export const searchData = async () => {
 	try {
-		const { data } = await axios.get('https://api.covid19api.com/countries');
+		const { data } = await axios.get('https://api.covid19api.com/summary');
 
 		return data;
 	} catch (error) {}

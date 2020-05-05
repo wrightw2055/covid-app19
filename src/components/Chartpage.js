@@ -4,7 +4,17 @@ import Chart from './Chart';
 import './Chartpage.css';
 import Searchbar from './Searchbar';
 
-export default class About extends Component {
+export default class Chartpage extends Component {
+	constructor (props){
+		super(props);
+		this.state = {
+			search: 'Spain'
+		};
+	}
+
+	handleChange = (event) =>{ this.setState({search: event.target.value});
+	
+	}
 	render() {
 		return (
 			<>
@@ -14,13 +24,14 @@ export default class About extends Component {
 					</div>
 					<div className='search-container'>
 						{' '}
-						<Searchbar />{' '}
+						<Searchbar handleChange={this.handleChange} />{' '}
 					<div className='chart-container'>
-						<Chart />
+						<Chart search= {this.state.search} />
 					</div>
 					</div>
 				</div>
 			</>
 		);
 	}
+
 }

@@ -1,56 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar} from 'react-chartjs-2';
 import { chartData } from '../api/api';
+import './Chart.css'
 
-const Chart = () => {
+const Chart = (props) => {
 	const [data, setData] = useState(null);
 	useEffect(() => {
 		(async () => {
 			const info = await chartData();
-			setData(info);
+			if (info) {const countrySearch =  info.Countries.find((Country)=> Country.Country.toLowerCase()=== props.search.toLowerCase())
+			console.log(countrySearch)
+			setData(countrySearch);
+			}
 		})();
-	}, []);
+	}, [props.search]);
 
-	if (data === null) {
-		return null;
+	if (!data) {
+		return <p>searching...</p>;
 	}
-
-	const formattedDate = `${new Date(data.Date).toDateString()}`;
-	// const moreDate = data.map(({ date }) => date)
 	
 	const lineChart = (
-		<Line
+		<Bar
 			data={{
-				labels: [formattedDate],
+				label: data.Country,
+				
 				datasets: [
 					{
-						data: [data.Global.TotalConfirmed],
+						data: [data.TotalConfirmed],
 						label: 'Infected',
 						borderColor: '#F0E100',
 						fill: true,
 					},
 					{
-						data: [data.Global.TotalDeaths],
+						data: [data.TotalDeaths],
 						label: 'Deaths',
 						borderColor: 'red',
 						backgroundColor: 'rgba(240, 52, 52, 0.8)',
 						fill: true,
 					},
 					{
-						data: [data.Global.TotalRecovered],
+						data: [data.TotalRecovered],
 						label: 'Recover',
 						borderColor: 'blue',
 						backgroundColor: 'blue',
 						fill: true,
 					},
+
 				],
+				
 			}}
 		/>
 	);
 
 	
 
-	return <>{lineChart}
+	return <>
+	<h1 className= 'country'>{data.Country}</h1>
+	 {lineChart}
 	
 	</>;
 };
