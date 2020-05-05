@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Bar} from 'react-chartjs-2';
+import { Bar, } from 'react-chartjs-2';
 import { chartData } from '../api/api';
 import './Chart.css'
+import { red } from '@material-ui/core/colors';
 
 const Chart = (props) => {
 	const [data, setData] = useState(null);
@@ -23,13 +24,14 @@ const Chart = (props) => {
 		<Bar
 			data={{
 				label: data.Country,
-				
+
 				datasets: [
 					{
 						data: [data.TotalConfirmed],
 						label: 'Infected',
 						borderColor: '#F0E100',
 						fill: true,
+						hoverBackgroundColor: '#F0E100',
 					},
 					{
 						data: [data.TotalDeaths],
@@ -37,6 +39,7 @@ const Chart = (props) => {
 						borderColor: 'red',
 						backgroundColor: 'rgba(240, 52, 52, 0.8)',
 						fill: true,
+						hoverBackgroundColor: 'red'
 					},
 					{
 						data: [data.TotalRecovered],
@@ -44,10 +47,10 @@ const Chart = (props) => {
 						borderColor: 'blue',
 						backgroundColor: 'blue',
 						fill: true,
-					},
+						hoverBackgroundColor: 'blue'
 
+					},
 				],
-				
 			}}
 		/>
 	);
@@ -55,8 +58,9 @@ const Chart = (props) => {
 	
 
 	return <>
-	<h1 className= 'country'>{data.Country}</h1>
+	<heading className= 'country'>{data.Country}</heading>
 	 {lineChart}
+	 
 	
 	</>;
 };

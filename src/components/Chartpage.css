@@ -1,4 +1,4 @@
-.all-content{
+ .all-content{
     background-color: #CCDBDC;
 }
 
@@ -8,16 +8,16 @@
 	align-items: flex-start;
     width: 20%;
     color: #ceb992;
-}
+} 
 
 .chart-container {
-    background-position: center;
-    display: flex;
+    
+    
     justify-content: center;
     background-color: whitesmoke;
-    height: 50%;
+    height: 10%;
 }
 
 .search-container{
    display: inline;
-}
+} 

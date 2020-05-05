@@ -8,9 +8,11 @@ export default class Chartpage extends Component {
 	constructor (props){
 		super(props);
 		this.state = {
-			search: 'Spain'
+			search: 'United States of America'
 		};
 	}
+
+
 
 	handleChange = (event) =>{ this.setState({search: event.target.value});
 	
